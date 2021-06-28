@@ -1,0 +1,12 @@
+- if notice
+  .row.mt-2
+    .col-12
+      .alert.alert-success.alert-dismissible.fade.show
+        button.btn-close aria-label="Close" data-bs-dismiss="alert" type="button"
+        = notice
+- if alert
+  .row.mt-2
+    .col-12
+      .alert.alert-danger.alert-dismissible.fade.show
+        button.btn-close aria-label="Close" data-bs-dismiss="alert" type="button"
+        = alert
