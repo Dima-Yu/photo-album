@@ -1,0 +1,29 @@
+.header {
+
+  .user-menu {
+    display: flex;
+    align-items: center;
+
+    .user-menu--img-holder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+      overflow: hidden;
+      border-radius: 50%;
+      border: 1px solid #d3d3d3;
+      background: #d3d3d3;
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+    &--icon {
+      font-size: 34px;
+      color: #fff;
+      line-height: 0;
+    }
+  }
+}

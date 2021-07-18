@@ -1,4 +1,4 @@
-nav.navbar.navbar-expand-lg.navbar-light.bg-light
+nav.navbar.navbar-expand-lg.navbar-light.bg-light.header
   .container-fluid
     a.navbar-brand href="#" Photo album
     button.navbar-toggler aria-controls="navbarSupportedContent" aria-expanded="false" aria-label=("Toggle navigation") data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button" 
@@ -14,17 +14,22 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
         ul.navbar-nav.me-auto.mb-2.mb-lg-0
           - if user_signed_in?
               li.nav-item.dropdown
-                a#navbarDropdown.nav-link.dropdown-toggle aria-expanded="false" data-bs-toggle="dropdown" href="#" role="button" 
-                  | #{current_user.email}
+                a#navbarDropdown.nav-link.dropdown-toggle.user-menu aria-expanded="false" data-bs-toggle="dropdown" href="#" role="button" 
+                  .user-menu--img-holder
+                    - if current_user.avatar.attached?
+                      = image_tag current_user.avatar.variant(resize_to_limit: [50, 50])
+                    - else
+                      i.bi.bi-person-fill.user-menu--icon
+                  | #{current_user.full_name}
                 ul.dropdown-menu aria-labelledby="navbarDropdown" 
                   li
-                    a.dropdown-item href="#"  My profile
+                    = link_to "My profile", edit_user_registration_path, class: "dropdown-item"
                   li
-                    a.dropdown-item href="#"  My albums
+                    a.dropdown-item href="#" My albums
                   li
                     hr.dropdown-divider/
                   li
-                    = link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link"
+                    = link_to "Logout", destroy_user_session_path, method: :delete, class: "dropdown-item"
           - else
             li.nav-item
               = link_to "Sign up", new_user_registration_path, class: "nav-link"
